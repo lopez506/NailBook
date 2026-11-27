@@ -55,7 +55,7 @@ Los datos de planes y precios de abajo se revisaron en noviembre de 2026 y **cam
 - **Hosting compartido/Web: no sirve** para este proyecto. ASP.NET solo se soporta en planes VPS (los servidores son Linux; una app ASP.NET Core se aloja en un VPS).
 - **Hosting Node.js (planes Business y Cloud):** corre Next.js con despliegue desde GitHub, pero las apps se ejecutan bajo demanda y el proceso se detiene tras un periodo sin tráfico. No resuelve la API en .NET.
 - **VPS (KVM 1/2): sí sirve y equivale a la Opción B.** Acceso root, plantilla Docker de un clic, firewall, snapshot gratuito y respaldos semanales gratuitos. KVM 1 (1 vCPU, 4 GB RAM, 50 GB NVMe): promoción de unos 4,99 USD/mes con plazo de 24 meses y renovación a unos 8,49 USD/mes; otra fuente independiente lista 12,99 a 19,49 USD/mes. **Verificar precio y plazo antes de comprar.** Los respaldos semanales no cumplen el RPO de 24 h, por eso el `pg_dump` nocturno sigue siendo necesario.
-- No comprar plazos largos para el portafolio.
+- No comprar plazos largos mientras el proyecto sea solo portafolio.
 
 ### Consecuencias para el diseño (importantes)
 1. **El sueño de la API afecta la reserva.** Las tareas de limpieza no corren mientras la API duerme. Por eso las consultas de disponibilidad deben **ignorar por sí mismas las retenciones vencidas** (`hold_expires_at` menor que la hora actual), sin depender de que el proceso de limpieza haya corrido; la limpieza real ocurre al guardar una cita nueva (Regla 3) y cuando la API despierte. La retención diaria de datos se dispara con una tarea programada de GitHub Actions que llama a un endpoint protegido.

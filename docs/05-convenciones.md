@@ -1,6 +1,6 @@
 # NailBook — Convenciones de código y Git
 
-Estado: **aprobado** el 20 nov 2026 (salvo la sección de nombres, que son valores por defecto ajustables). Actualizado el 25 nov 2026: repositorio **público** y reglas de qué se publica. Este documento es la referencia para el chat de Código y para cualquier chat nuevo.
+Estado: **aprobado** el 20 nov 2026 (salvo la sección de nombres, que son valores por defecto ajustables). Actualizado el 25 nov 2026: repositorio **público** y reglas de qué se publica. Actualizado el 27 nov 2026: se alinea con las copias públicas de `docs/`. Este documento es la referencia para el chat de Código y para cualquier chat nuevo.
 
 ## Idioma
 - **Código en inglés**: variables, funciones, componentes, carpetas, tablas, endpoints y mensajes de commit.
@@ -31,10 +31,14 @@ Consecuencias que se cumplen siempre:
 
 ### Qué va en `docs/`
 `docs/` es público. Se copian **solo los documentos técnicos**: `01-direccion-arte`, `02-arquitectura`, `04-roadmap`, `05-convenciones`, `06-seguridad`, `07-despliegue` y `08-herramientas`.
-- `00-brief` **no se copia tal cual**: se publica una versión resumida (qué es el proyecto, alcance, stack).
+- `00-brief` **no se copia tal cual**. Se publica una versión resumida (qué es el proyecto, alcance, stack).
 - `09-chat-codigo` **no se copia**: contiene preferencias personales de trabajo.
 - Los runbooks y la guía de seguridad (Fase 9) se escriben sin secretos, sin datos reales y sin direcciones internas.
 - Antes de cada copia a `docs/` se revisa que no haya nada de lo anterior.
+
+### Cómo se mantienen las copias
+- Los **originales viven en el Project de Claude** y son la fuente. Las copias de `docs/` se derivan de ellos.
+- Las únicas diferencias permitidas son las de este apartado (`00-brief` resumido y `09` sin copiar). Si se cambia un original, se actualiza la copia; si se cambia una copia, el cambio se lleva al chat Principal para igualar el original.
 
 ## Ramas (aprobado)
 
@@ -97,7 +101,7 @@ En cada Pull Request y en cada cambio a `dev` y `main`: estilo (lint), pruebas y
 - TypeScript: `camelCase` para variables y funciones, `PascalCase` para componentes, archivos en `kebab-case` (por ejemplo `booking-form.tsx`).
 
 ## Borrador de instrucciones para el chat de Código
-Resumen de cómo se guía el trabajo:
+La versión vigente está en `09-chat-codigo`. Resumen:
 - **Fabián escribe el código** siguiendo indicaciones. No se usa Claude Code.
 - Se entrega el **código completo** de cada archivo, nunca fragmentos sueltos ni zips (archivos individuales).
 - Explicación breve de qué se hizo y por qué.
