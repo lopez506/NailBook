@@ -1,6 +1,6 @@
 # NailBook — Convenciones de código y Git
 
-Estado: **aprobado** el 20 nov 2026 (salvo la sección de nombres, que son valores por defecto ajustables). Actualizado el 25 nov 2026: repositorio **público** y reglas de qué se publica. Actualizado el 27 nov 2026: se alinea con las copias públicas de `docs/`. Este documento es la referencia para el chat de Código y para cualquier chat nuevo.
+Estado: **aprobado** el 20 nov 2026 (salvo la sección de nombres, que son valores por defecto ajustables). Actualizado el 25 nov 2026: repositorio **público** y reglas de qué se publica. Actualizado el 27 nov 2026: se alinea con las copias públicas de `docs/` y se anota lo aprendido en la Fase 0. Este documento es la referencia para el chat de Código y para cualquier chat nuevo.
 
 ## Idioma
 - **Código en inglés**: variables, funciones, componentes, carpetas, tablas, endpoints y mensajes de commit.
@@ -15,6 +15,7 @@ NailBook/
 ├── api/     ASP.NET Core (backend)
 └── docs/    documentos técnicos del proyecto (ver "Qué va en docs/")
 ```
+En la raíz van los archivos base: `.gitignore`, `.gitattributes` (`eol=lf` y archivos binarios, para evitar diferencias de saltos de línea entre Windows y Linux), `.editorconfig`, `README.md` (en inglés) y `.env.example`.
 
 ### Visibilidad: público (decidido el 25 nov 2026)
 **El repositorio es público desde el primer commit.** Motivos:
@@ -57,6 +58,7 @@ Reglas para que no se multipliquen las ramas:
 - **Se borra al integrar** (activar en GitHub el borrado automático de ramas integradas).
 - **Cambios mínimos** (una errata, un ajuste en `docs/`) pueden ir directo a `dev` sin rama.
 - Nombres de rama en minúsculas con guiones (`feature/booking-hold-endpoint`).
+- **Excepción única, ya usada en la Fase 0:** el primer commit fue directo a `main` para que existieran `main` y `dev`. Desde entonces todo entra por `dev`.
 
 ## Commits
 Formato Conventional Commits, en inglés, en imperativo y de máximo 72 caracteres en la primera línea:
@@ -67,7 +69,7 @@ Formato Conventional Commits, en inglés, en imperativo y de máximo 72 caracter
 - `test(api): cover double booking constraint`
 - `chore: update dependencies`
 
-Commits pequeños y frecuentes.
+Commits pequeños y frecuentes. Los commits se firman con el **correo noreply de GitHub** (el correo personal no debe quedar en un historial público).
 
 ## Pull Requests
 - Título con el mismo formato que un commit.
@@ -87,6 +89,7 @@ En cada Pull Request y en cada cambio a `dev` y `main`: estilo (lint), pruebas y
 ## Protección de ramas
 - `main`: Pull Request obligatorio, revisiones automáticas en verde, sin push directo y sin force push.
 - `dev`: sin force push y revisiones automáticas activas.
+- Se configuran como *rulesets* de GitHub (`protect-main` y `protect-dev`). **Exigir las revisiones de estado** en los rulesets se activa en la Fase 1, cuando la CI exista.
 
 ## Secretos
 - **Nunca se suben al repositorio** (que es público): archivos `.env`, claves, cadenas de conexión, tokens.
